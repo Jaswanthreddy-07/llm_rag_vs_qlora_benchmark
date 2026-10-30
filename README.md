@@ -1,41 +1,39 @@
-<<<<<<< HEAD
-# llm_rag_vs_qlora_benchmark
-=======
-# Benchmarking RAG vs. QLoRA Fine-Tuning on Open-Source LLMs
+# Benchmarking RAG vs. QLoRA Fine-Tuning on Open-Source LLMs for Automated Information Extraction
 
-An end-to-end, reproducible research benchmark comparing Retrieval-Augmented Generation (RAG) against Low-Rank Adaptation (QLoRA) fine-tuning on open-weights Large Language Models for domain-specific information extraction tasks.
+An end-to-end, reproducible AI research benchmark evaluating the trade-offs between **Retrieval-Augmented Generation (RAG)** and **Quantized Low-Rank Adaptation (QLoRA)** fine-tuning on open-weights Large Language Models for domain-specific information extraction tasks.
 
-## Project Structure
-- `requirements.txt`: Required Python dependencies.
-- `step1_setup_and_verify.py`: Environment verification script (PyTorch, GPU, Transformers).
-- `step2_build_rag_chromadb.py`: Document ingestion, chunking, embedding, vector storage, and RAG retrieval latency benchmark.
-- `step3_run_benchmark.py`: Comparative benchmark runner for accuracy, latency, and VRAM memory usage.
-- `run_pipeline.py`: Main executable runner executing all steps sequentially.
+---
 
-## Getting Started
+## 📌 Project Overview
+When adapting LLMs for enterprise information extraction from unstructured technical documentation, system designers face a key architectural decision: dynamic context injection via RAG or model parameter adaptation via fine-tuning. 
 
-1. **Clone or Extract Repository:**
-   ```bash
-   cd llm_rag_vs_qlora_benchmark
-   ```
+This repository provides a complete evaluation pipeline measuring:
+- **Inference Latency** (CPU vs. GPU execution)
+- **Factual Extraction Accuracy** (Zero-shot performance)
+- **Memory Overhead & Resource Footprint**
 
-2. **Create Virtual Environment & Install Dependencies:**
-   ```bash
-   python -m venv venv
-   # On Windows:
-   venv\Scripts\activate
-   # On macOS/Linux:
-   source venv/bin/activate
+---
 
-   pip install -r requirements.txt
-   ```
+## 🛠️ Tech Stack & Frameworks
+- **Language:** Python 3.10+
+- **LLM Engine:** Hugging Face `transformers`, `accelerate`, `bitsandbytes`
+- **Models:** `Qwen/Qwen2.5-0.5B-Instruct`
+- **Vector Database:** `ChromaDB`
+- **Embeddings:** `sentence-transformers/all-MiniLM-L6-v2`
+- **Orchestration:** `LangChain` / `langchain-chroma`
+- **Publication Format:** IEEE Double-Column LaTeX
 
-3. **Execute Benchmark Pipeline:**
-   ```bash
-   python run_pipeline.py
-   ```
+---
 
-## Citation & Resume
-If you use this benchmark codebase in your resume or research paper draft, cite as:
-`Benchmarking RAG vs. QLoRA Fine-Tuning on Open-Source LLMs (2026), GitHub Repository.`
->>>>>>> a539a4b (Initial public project upload)
+## 📂 Repository Structure
+
+```text
+llm-rag-vs-qlora-benchmark/
+├── paper/
+│   └── paper.pdf                # Compiled IEEE research paper manuscript
+├── main.py                      # Standalone combined Python pipeline script
+├── step1_setup_and_verify.py    # Hardware and library initialization script
+├── step2_build_rag_chromadb.py  # Vector store creation & RAG execution script
+├── step3_run_benchmark.py       # Metrics logger & baseline analysis
+├── requirements.txt             # Python dependencies
+└── README.md                    # Project documentation
